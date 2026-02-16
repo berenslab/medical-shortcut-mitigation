@@ -1,0 +1,70 @@
+seed: 1234
+devices: [0,1]
+max_epochs: 6000
+out_dir: ./out/morpho_mnist/mine
+
+version:
+
+training:
+  num_folds: 5  # k-fold cross-validation
+  fold: 0
+  criterion: 
+    name: BCE  # for subspace classifiers
+  warmup_epochs: 0
+  start_saving_epoch: 3000
+
+  lambda_dmeasure: 0.55
+  mine_update_interval: 3
+
+  precision: 32
+  checkpoints:
+    save_top_k: 1
+    monitor: 'val loss'
+    mode: min
+    filename: '{epoch}'
+
+model:
+  method: MINE
+  encoder: simple_encoder
+  in_channels: 1
+  subspace_dims: [2, 2]
+  class_dims: [1, 1]
+
+optimizer:
+  name: Adam
+  kwargs:
+    lr: 0.0001
+    weight_decay: 0.0001
+
+optimizer_mine:
+  name: Adam
+  kwargs:
+    lr: 0.0001
+    weight_decay: 0
+
+metrics: [
+  'Accuracy',
+  'AUROC',
+]
+
+data:
+  dataset: morpho_mnist
+  dataset_path: /path/to/dataset/
+  image_size: 28
+  correlation_strength: [95, 5]
+  batch_size: 800
+  num_workers: 8
+  prefetch_factor: 2
+
+test_data:
+  inverse:
+    correlation_strength: [5, 95]
+    bucket_samples:
+    sampler_weights:
+  balanced:
+    correlation_strength: [50, 50]
+    bucket_samples:
+    sampler_weights:
+  batch_size: 800
+  num_workers: 8
+  prefetch_factor: 2

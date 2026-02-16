@@ -1,0 +1,65 @@
+seed: 1234
+
+accelerator: gpu
+devices: [0]
+max_epochs: 1000
+out_dir: ./out/morpho_mnist/dcor
+
+version: 
+
+training:
+  num_folds: 5  # k-fold cross-validation
+  fold: 0
+  criterion: 
+    name: BCE  # for subspace classifiers
+  start_saving_epoch: 0
+  lambda_dmeasure: 0.5
+  warmup_epochs: 200
+  gamma:
+
+  precision: 32
+  checkpoints:
+    save_top_k: 1
+    monitor: 'val loss'
+    mode: min
+    filename: '{epoch}'
+
+model:
+  method: dCor
+  encoder: simple_encoder
+  in_channels: 1
+  subspace_dims: [2, 2]
+  class_dims: [1, 1]
+
+optimizer:
+  name: Adam
+  kwargs:
+    lr: 1.0e-3
+    weight_decay: 1.0e-05
+
+metrics: [
+  'Accuracy',
+  'AUROC',
+]
+
+data:
+  dataset: morpho_mnist
+  dataset_path: /path/to/dataset/
+  image_size: 28
+  correlation_strength: [95, 5]
+  batch_size: 900
+  num_workers: 8
+  prefetch_factor: 2
+
+test_data:
+  inverse:
+    correlation_strength: [5, 95]
+    bucket_samples:
+    sampler_weights:
+  balanced:
+    correlation_strength: [50, 50]
+    bucket_samples:
+    sampler_weights:
+  batch_size: 900
+  num_workers: 8
+  prefetch_factor: 2

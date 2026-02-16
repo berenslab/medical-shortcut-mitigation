@@ -1,0 +1,50 @@
+[project]
+name = "shortcut"
+version = "0.0.1"
+authors = [
+  { name="Sarah Mueller", email="sar.mueller@uni-tuebingen.de" },
+]
+description = "A project called medical-shortcut-mitigation"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+requires-python = ">=3.12"
+dependencies = [
+    "albumentations>=2.0.8",
+    "brokenaxes>=0.6.2",
+    "fundus-image-toolbox>=0.1.0",
+    "lightning>=2.5.1.post0",
+    "natsort>=8.4.0",
+    "numpy==2.2.5",
+    "omegaconf>=2.3.0",
+    "pandas>=2.2.3",
+    "pydicom>=3.0.1",
+    "pyyaml>=6.0.2",
+    "rich>=14.0.0",
+    "scikit-learn>=1.7.0",
+    "standard-imghdr>=3.13.0",
+    "tensorboard>=2.19.0",
+    "torch==2.6.0",
+    "torchmetrics>=1.7.1",
+    "torchvision>=0.21.0",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "isort>=6.0.1",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.3",
+]
+
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+# Tell setuptools to look in the `src` directory
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]

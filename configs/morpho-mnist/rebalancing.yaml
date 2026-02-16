@@ -1,0 +1,74 @@
+seed: 1234
+
+accelerator: gpu
+devices: [0]
+max_epochs: 250
+out_dir: ./out/morpho_mnist/rebalancing
+version: 
+
+training:
+  num_folds: 5  # k-fold cross-validation
+  fold: 0
+  criterion: 
+    name: BCE  # for subspace classifiers
+  warmup_epochs: 0
+  start_saving_epoch: 0
+
+  precision: 32
+  checkpoints:
+    save_top_k: 1
+    monitor: 'val loss'
+    mode: min
+    filename: '{epoch}'
+
+model:
+  method: Baseline
+  encoder: simple_encoder
+  in_channels: 1
+  subspace_dims: [2, 2]
+  class_dims: [1, 1]
+
+optimizer:
+  name: Adam
+  kwargs:
+    lr: 1.0e-3
+    weight_decay: 1.0e-05
+
+metrics: [
+  'Accuracy',
+  'AUROC',
+]
+
+data:
+  dataset: morpho_mnist
+  image_size: 28
+  dataset_path: /path/to/dataset/
+  correlation_strength: [95, 5]
+  batch_size: 900
+  num_workers: 8
+  prefetch_factor: 2
+
+  bucket_labels: [[0,0], [0,1], [1,0], [1,1]]
+
+  # sampler for multi-task learning
+  weighted_bucket_sampler: 
+    train_weights: [1, 1, 1, 1]
+    val_weights: [1, 1, 1, 1] 
+  factor_bucket_sampler:
+
+  # sampler for single-task learning
+  weighted_random_sampler: False
+
+
+test_data:
+  inverse:
+    correlation_strength: [5, 95]
+    bucket_samples:
+    sampler_weights:
+  balanced:
+    correlation_strength: [50, 50]
+    bucket_samples:
+    sampler_weights:
+  batch_size: 900
+  num_workers: 8
+  prefetch_factor: 2

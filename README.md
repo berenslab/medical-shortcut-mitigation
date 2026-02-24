@@ -101,14 +101,14 @@ These scripts work with both newly trained models and the pretrained models prov
 - `src/shortcut/evaluation/` -- disentanglement performance, compute-time measurement  
 - `src/shortcut/visualization/` -- contains the code to recreate all figures from the paper: label distributions, scatterplots, prevalence ablation, convergence plots
 
-
-## Citation
-
+## Paper
 ```bibtex
-@article{mueller2026shortcut,
+@misc{mueller2026mitigating,
   title={Mitigating Shortcut Learning via Feature Disentanglement in Medical Imaging: A Benchmark Study},
   author={M\"uller, Sarah and Berens, Philipp},
-  journal={...},
-  year={2026}
+  year={2026},
+  eprint={2602.18502},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2602.18502}
 }
-```

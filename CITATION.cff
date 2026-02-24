@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+title: "Medical Shortcut Mitigation: Code for Mitigating Shortcut Learning via Feature Disentanglement in Medical Imaging"
+message: "If you use this software, please cite the software DOI below. For scientific results, please cite the associated arXiv paper."
+type: software
+
+authors:
+  - family-names: Müller
+    given-names: Sarah
+  - family-names: Berens
+    given-names: Philipp
+
+year: 2026
+doi: 10.5281/zenodo.18630074
+url: https://doi.org/10.5281/zenodo.18630074
+repository-code: https://github.com/berenslab/medical-shortcut-mitigation
+
+preferred-citation:
+  type: article
+  title: "Mitigating Shortcut Learning via Feature Disentanglement in Medical Imaging: A Benchmark Study"
+  authors:
+    - family-names: Müller
+      given-names: Sarah
+    - family-names: Berens
+      given-names: Philipp
+  year: 2026
+  journal: arXiv
+  doi: 10.48550/arXiv.2602.18502
+  url: https://arxiv.org/abs/2602.18502

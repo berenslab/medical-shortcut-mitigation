@@ -101,14 +101,27 @@ These scripts work with both newly trained models and the pretrained models prov
 - `src/shortcut/evaluation/` -- disentanglement performance, compute-time measurement  
 - `src/shortcut/visualization/` -- contains the code to recreate all figures from the paper: label distributions, scatterplots, prevalence ablation, convergence plots
 
-## Paper
+## Citation
+If you use this repository, code, or pretrained model weights, please cite either the Zenodo release for the software:
+```bibtex
+@software{mueller2026code,
+  author       = {Sarah Mueller and Philipp Berens},
+  title        = {Pretrained Models and Benchmark Results for Medical Shortcut Mitigation},
+  year         = {2026},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.18630074},
+  url          = {https://doi.org/10.5281/zenodo.18630074}
+}
+```
+or the associated arXiv paper for the scientific results:
 ```bibtex
 @misc{mueller2026mitigating,
-  title={Mitigating Shortcut Learning via Feature Disentanglement in Medical Imaging: A Benchmark Study},
-  author={M\"uller, Sarah and Berens, Philipp},
-  year={2026},
-  eprint={2602.18502},
-  archivePrefix={arXiv},
-  primaryClass={cs.CV},
-  url={https://arxiv.org/abs/2602.18502}
+  author       = {Sarah Mueller and Philipp Berens},
+  title        = {Mitigating Shortcut Learning via Feature Disentanglement in Medical Imaging: A Benchmark Study},
+  year         = {2026},
+  eprint       = {2602.18502},
+  archivePrefix= {arXiv},
+  primaryClass = {cs.CV},
+  url          = {https://arxiv.org/abs/2602.18502}
 }
+```
